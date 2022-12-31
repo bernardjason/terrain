@@ -1,0 +1,19 @@
+[target.wasm32-unknown-emscripten]
+rustflags = [
+    "-C", "link-arg=-s", "-C" ,"link-arg=WEBGL2_BACKWARDS_COMPATIBILITY_EMULATION=1",
+    "-C", "link-arg=-s", "-C", "link-arg=USE_SDL=2",
+    "-C", "link-arg=-s", "-C", "link-arg=MIN_WEBGL_VERSION=2",
+    "-C", "link-arg=-s", "-C", "link-arg=MAX_WEBGL_VERSION=2",
+"-C", "link-arg=--embed-file", "-C", "link-arg=resources/font.png",
+"-C", "link-arg=--embed-file", "-C", "link-arg=resources/sky.png",
+"-C", "link-arg=--embed-file", "-C", "link-arg=resources/simpleplane/simpleplane.mtl",
+"-C", "link-arg=--embed-file", "-C", "link-arg=resources/simpleplane/simpleplane.obj",
+"-C", "link-arg=--embed-file", "-C", "link-arg=resources/simpleplane/simpleplane.png",
+"-C", "link-arg=--embed-file", "-C", "link-arg=resources/alienship/invade.mtl",
+"-C", "link-arg=--embed-file", "-C", "link-arg=resources/alienship/invade.obj",
+"-C", "link-arg=--embed-file", "-C", "link-arg=resources/alienship/invade.png",
+"-C", "link-arg=--embed-file", "-C", "link-arg=resources/multi-colour.png",
+"-C", "link-arg=--embed-file", "-C", "link-arg=resources/prize.png",
+    "-C", "link-arg=-s", "-C", "link-arg=EXTRA_EXPORTED_RUNTIME_METHODS=[\"ccall\",\"cwrap\"]",
+    "-Clink-args=--js-library main.js"
+]

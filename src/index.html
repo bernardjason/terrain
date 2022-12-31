@@ -1,0 +1,93 @@
+<html>
+<head>
+    <meta http-equiv="Cache-control" content="private">
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"/>
+    <style>
+        body {
+            font-family: monospace, courier, fixed;
+            font-size: 1vw;
+            line-height: 1.5vw;
+            font-smooth: never;
+            -webkit-font-smoothing : none;
+            color: #ffffff;
+            background: #000000;
+            border-width: 20px 20px 20px 20px; /* t r b l */
+            padding: 2vw;
+            padding-left:1vw;
+            padding-right:1vw;
+        }
+        .loading {
+            position:absolute;
+            top: 0px;
+        }
+        .theend {
+               width: 80%;
+               height: 80%;
+               margin: 0 auto;
+               padding: 20px;
+        }
+        H1 { text-align: center }
+        div.fixed {
+          position: absolute;
+          top: 25%;
+          right: 100;
+        }
+    </style>
+    <script>
+        var Module = {};
+        var __cargo_web = {};
+        Object.defineProperty(Module, 'canvas', {
+            get: function () {
+                if (__cargo_web.canvas) {
+                    return __cargo_web.canvas;
+                }
+
+                var canvas = document.createElement('canvas');
+                // Disable right-click on the canvas
+                canvas.addEventListener('contextmenu', event => event.preventDefault());
+                canvas.setAttribute("id", "canvas");
+                canvas.setAttribute("width", "800");
+                canvas.setAttribute("height", "600");
+                canvas.setAttribute("tabindex", "1");
+                canvas.setAttribute("style", "border:8px solid black");
+                // var body = document.querySelector('body')
+		        var body = document.getElementById("game_window");
+                body.insertBefore(canvas, body.firstChild);
+                __cargo_web.canvas = canvas;
+
+
+                return canvas;
+            }
+        });
+
+    function start_game() {
+        console.log("start_game");
+		var loading = document.getElementById("loading");
+		loading.style.visibility = 'hidden';
+		document.getElementById("score").innerHTML = "";
+    }
+    function end_game() {
+        document.getElementById("score").style.display ="none";
+        document.getElementById("canvas").style.display = "none";
+        document.getElementById("end").style.display = "block";
+    }
+
+    </script>
+
+
+</head>
+<body>
+<div>
+    <p id="score">Loading... please wait this can take a while to download first time</p>
+</div>
+<div id="game_window">
+    <img id="loading" src="loading.png" style="position:absolute; left: 0px;   width: 800px; height:600px;">
+    <div class="theend" id="end" style="display:none">
+        <h1>THE END!!!!</h1>
+        <h2 id="finalscore"></h2>
+    </div>
+</div>
+
+<script src='terrain.js'></script>
+</body>
+</html>
